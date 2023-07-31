@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="app.js" async></script>
+    <title>Module 04</title>
+</head>
+<body class="flex flex-col p-4">
+    <header class="flex flex-col justify-center items-center bg-slate-500 text-white w-full p-4">
+        <h1 class="text-3xl font-bold">Nouvelle boutique</h1>
+        <p id="shoppingCart" class="mb-2">
+            Votre panier est vide
+        </p>
+        <button type="button" id="clear-shopping-cart" onclick=clearShoppingCart() class="outline p-2 rounded-md">Vider Panier</button>
+    </header>
+    <div class="flex justify-between">
+        <section class="bg-slate-200 px-4 pt-6 pb-12 w-2/5">
+            <ul>
+                <li>Ipad</li>
+                <li>Iphone</li>
+                <li>Android</li>
+            </ul>
+        </section>
+        <section class="py-4 pr-8">
+            <h2 class="font-bold">Détails du panier :</h2>
+            <p id="detailShoppingCart"></p>
+        </section>
+    </div>
+
+    <footer class="flex flex-col bg-slate-500 text-white justify-center items-center p-4">
+        <input type="text" id="productInput" class="mb-4 rounded-md text-black p-2 w-full">
+        <button type="button" onclick=addProduct() class="bg-blue-500 p-4 rounded-md w-full mb-4">Ajoute un produit</button>
+        <button type="button" onclick=deleteProduct() class="bg-red-500 p-4 rounded-md w-full">Supprimer un produit</button>
+    </footer>
+</body>
+</html>
