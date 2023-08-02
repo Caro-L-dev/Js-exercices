@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="app.js" async></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Valider un rendez-vous</title>
+</head>
+<body class="flex justify-center align-center">
+    <div class="flex flex-col justify-center align-center p-4 w-1/2">
+        <div class="bg-sky-100 rounded-md shadow-md p-4 text-center">
+            <h1 class="font-bold text-lg text-center text-blue-800 mb-4">Valider un rendez-vous</h1>
+            <p>⏰ : <span id="startTime"></span></p>
+            <p>💀 : <span id="endTime"></span></p>
+            <p>⌛ : <span id="duration"></span></p>
+            <p class="text-center mt-4 mb-2">Rendez-vous <span id="isValid"></span></p>
+            <p>Fermeture à <span id="closureShop"></span></p>
+        </div>
+
+    </div>
+</body>
+</html>
