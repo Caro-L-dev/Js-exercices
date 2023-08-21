@@ -55,18 +55,32 @@ function main() {
     let startHours = 15;
     let startMinutes = 40;
 
-    let durationMinutes = 15;
-
     let shopClosingTimeHours = 16;
     let shopClosingTimeMinutes = 30;
 
-    const { endHours, endMinutes } = calculateEndTimeAppointement(startHours, startMinutes, durationMinutes);
+    // let durationMinutes = 15;
 
-    updateAppointmentTime(startHours, startMinutes, endHours, endMinutes, durationMinutes);
-    checkAppointementEndsBeforeShopClosure(endHours, endMinutes, shopClosingTimeHours, shopClosingTimeMinutes);
+    for ( let durationMinutes = 1; durationMinutes <= 120; durationMinutes = durationMinutes + 1) {
+        const { endHours, endMinutes } = calculateEndTimeAppointement(startHours, startMinutes, durationMinutes);
 
-    const closureShop = document.getElementById('closureShop');
-    closureShop.textContent = `${shopClosingTimeHours}h${shopClosingTimeMinutes}.`;
+        updateAppointmentTime(startHours, startMinutes, endHours, endMinutes, durationMinutes);
+        checkAppointementEndsBeforeShopClosure(endHours, endMinutes, shopClosingTimeHours, shopClosingTimeMinutes);
+
+        const closureShop = document.getElementById('closureShop');
+        closureShop.textContent = `${shopClosingTimeHours}h${shopClosingTimeMinutes}.`;
+    }
+
+
+    // let shopClosingTimeHours = 16;
+    // let shopClosingTimeMinutes = 30;
+
+    // const { endHours, endMinutes } = calculateEndTimeAppointement(startHours, startMinutes, durationMinutes);
+
+    // updateAppointmentTime(startHours, startMinutes, endHours, endMinutes, durationMinutes);
+    // checkAppointementEndsBeforeShopClosure(endHours, endMinutes, shopClosingTimeHours, shopClosingTimeMinutes);
+
+    // const closureShop = document.getElementById('closureShop');
+    // closureShop.textContent = `${shopClosingTimeHours}h${shopClosingTimeMinutes}.`;
 };
 
 main();
