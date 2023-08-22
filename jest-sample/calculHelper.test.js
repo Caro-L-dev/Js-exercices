@@ -1,4 +1,4 @@
-import {displayTextCalcultateArea, calcultateArea} from './calculHelper';
+import {displayTextCalcultateArea, calcultateArea, calcultateAreaSquare} from './calculHelper';
 
 // - Créer une suite de tests.
 // - Premier test =  Tester un message avec des valeurs correcte pour calcultateArea.
@@ -38,7 +38,6 @@ describe ('Testons la fonction displayTextCalcultateArea()', ()=> {
 
 
 describe ('Testons la fonction calcultateArea()', ()=> {
-
     test('Affiche des valeurs correcte', ()=> {
         expect(calcultateArea(10, 10)).toBe(100);
     });
@@ -58,5 +57,17 @@ describe ('Testons la fonction calcultateArea()', ()=> {
     test('Le résultat est un nombre', ()=> {
         expect(calcultateArea(10, 10)).not.toBeNaN();
     });
+});
 
+
+
+describe ('Testons la fonction calcultateAreaSquare()', ()=> {
+
+    test('Affiche un résultat correct', ()=> {
+        expect(calcultateAreaSquare(10)).toBe(100);
+    });
+
+    test('Affiche un résultat positif', ()=> {
+        expect(calcultateAreaSquare(10)).toBeGreaterThan(0);
+    });
 });
