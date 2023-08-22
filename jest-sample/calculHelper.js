@@ -22,9 +22,18 @@ function displayTextCalcultateArea(a, b){
     return text;
 };
 
+function isAdmin(user){
+    if (user.role == "admin"){
+        return true;
+    } else {
+        throw new Error('Interdit');
+    };
+};
+
 export {
     calcultateArea,
     calcultateAreaSquare,
     multiplication,
-    displayTextCalcultateArea
+    displayTextCalcultateArea,
+    isAdmin
 };

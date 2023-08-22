@@ -1,4 +1,4 @@
-import {displayTextCalcultateArea, calcultateArea, calcultateAreaSquare} from './calculHelper';
+import {displayTextCalcultateArea, calcultateArea, calcultateAreaSquare, isAdmin} from './calculHelper';
 
 // - Créer une suite de tests.
 // - Premier test =  Tester un message avec des valeurs correcte pour calcultateArea.
@@ -69,5 +69,27 @@ describe ('Testons la fonction calcultateAreaSquare()', ()=> {
 
     test('Affiche un résultat positif', ()=> {
         expect(calcultateAreaSquare(10)).toBeGreaterThan(0);
+    });
+});
+
+
+
+// ERRORS
+describe ('Testons la fonction isAdmin()', ()=> {
+    let guestUser = {role: 'guest'};
+    let adminUser = {role: 'admin'};
+
+    test(`Si l'utilisateur n'est pas un admin, afficher une erreur`, ()=> {
+        function callIsAdmin() {
+            isAdmin(guestUser);
+        }
+        expect(callIsAdmin).toThrowError('Interdit'); 
+    });
+
+    test(`Si l'utilisateur est un admin, alors tout est OK`, ()=> {
+        function callIsAdmin() {
+            isAdmin(adminUser);
+        }
+        expect(callIsAdmin).toBeTruthy(); 
     });
 });
