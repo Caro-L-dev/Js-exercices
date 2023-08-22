@@ -1,4 +1,4 @@
-import {displayTextCalcultateArea} from './calculHelper';
+import {displayTextCalcultateArea, calcultateArea} from './calculHelper';
 
 // - Créer une suite de tests.
 // - Premier test =  Tester un message avec des valeurs correcte pour calcultateArea.
@@ -31,6 +31,32 @@ describe ('Testons la fonction displayTextCalcultateArea()', ()=> {
 
     test('Tester le message avec des valeurs nombres en chaînes de caractères pour calcultateArea()', ()=> {
         expect(displayTextCalcultateArea("10", "10")).toContain("L'aire ne peut pas être calculée.");
+    });
+
+});
+
+
+
+describe ('Testons la fonction calcultateArea()', ()=> {
+
+    test('Affiche des valeurs correcte', ()=> {
+        expect(calcultateArea(10, 10)).toBe(100);
+    });
+
+    test('Le résultat est supérieur à 0', ()=> {
+        expect(calcultateArea(10, 10)).toBeGreaterThan(0);
+    });
+
+    test('Le résultat est supérieur ou égal à 0', ()=> {
+        expect(calcultateArea(10, 10)).toBeGreaterThanOrEqual(0);
+    });
+
+    test('Le résultat pas un nombre', ()=> {
+        expect(calcultateArea("je suis une string", 10)).toBeNaN();
+    });
+
+    test('Le résultat est un nombre', ()=> {
+        expect(calcultateArea(10, 10)).not.toBeNaN();
     });
 
 });
