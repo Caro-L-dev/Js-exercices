@@ -178,3 +178,44 @@ describe (`Testons array de rôles`, ()=> {
     });
 
 });
+
+// Asynchrone
+
+function fetchApi(callback){
+    setTimeout(function (){
+        callback("{api:ok}");
+    }, 3000);
+};
+
+// A FAIRE
+// done() dans un try catch
+// callback way
+describe (`Testons fetch api async`, ()=> {
+
+    test(`Test fetchApi`, (done)=> {
+        function callback(data){
+            try {
+                expect(data).toBe("{api:ok}");
+                done();
+             } catch(error) {
+                done(error);
+            };
+        };
+        fetchApi(callback);
+    });
+});
+
+// Promise
+function fetchApiPromise(){
+    return new Promise((resolve, reject)=> {
+            setTimeout(function (){
+                resolve("{api:ok}");
+            }, 3000);
+    });
+};
+
+test('Test de Promise', ()=> {
+    return fetchApiPromise().then(data=> {
+        expect(data).toBe("{api:ok}");
+    });
+});
