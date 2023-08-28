@@ -93,3 +93,88 @@ describe ('Testons la fonction isAdmin()', ()=> {
         expect(callIsAdmin).toBeTruthy(); 
     });
 });
+
+// Math object
+
+const advancedPermission = {
+    domain: "mondomaine.com",
+    level: 4,
+    perms: {
+        roles: ['guest', 'reader', 'reviewer'],
+        delegated: true,
+        method: 'oauth2'
+    }
+};
+
+describe (`Testons l'objet avancé permission`, ()=> {
+
+    const userPermission = {
+        domain: "mondomaine.com",
+        perms: {
+            roles: ['guest', 'reader', 'reviewer'],
+            delegated: true,
+            method: expect.stringMatching('saml|oauth|oauth2')
+        }
+    };
+
+    test(`Tester les permissions`, ()=> {
+        expect(advancedPermission).toMatchObject(userPermission);
+    })
+});
+
+
+// ToBeInstanceOf
+class User {
+    constructor(name){
+        this.name = name;
+    }
+};
+
+function Auth(name) {
+    if (typeof name === 'undefined') {
+        throw new Error('Le nom doit être définit.');
+    };
+
+    return new User(name);
+};
+
+describe (`Testons l'instance de classe`, ()=> {
+
+    test(`Tester l'instance de User`, ()=> {
+        expect(new User()).toBeInstanceOf(User);
+    });
+
+    test(`Tester l'authentification d'un nouvel utilisateur`, ()=> {
+        expect(Auth("Caro")).toBeInstanceOf(User);
+    });
+
+    test(`Tester l'authentification d'un nouvel utilisateur vide`, ()=> {
+        function callAuth(){
+            Auth();
+        };
+        expect(callAuth).toThrowError('Le nom doit être définit.');
+    });
+});
+
+// arrayContaining
+function getRoleA(){
+    return ["admin", "guest"];
+};
+
+function getRoleB(){
+    return ["admin", "user"];
+};
+
+describe (`Testons array de rôles`, ()=> {
+
+    const expected = ["admin", "guest"];
+
+    test(`Tester les valeurs attendues`, ()=> {
+        expect(getRoleA()).toEqual(expect.arrayContaining(expected));
+    });
+
+    test(`Tester les valeurs non attendues`, ()=> {
+        expect(getRoleB()).not.toEqual(expect.arrayContaining(expected));
+    });
+
+});
