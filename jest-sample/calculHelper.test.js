@@ -219,3 +219,30 @@ test('Test de Promise', ()=> {
         expect(data).toBe("{api:ok}");
     });
 });
+
+// MOCK
+function forEach(items, callback){
+    for(let index = 0; index < items.length; index++ ){
+        callback(items[index]);
+    };
+};
+
+test('Test de forEach avec Mock', ()=> {
+    const mockCallback = jest.fn( x => "salut" + x);
+    forEach(["Toto", "Titi"], mockCallback );
+
+    expect(mockCallback.mock.calls.length).toBe(2);
+});
+
+test('Vérifions que le premier item du tableau soit Toto', ()=> {
+    const mockCallback = jest.fn( x => "salut " + x);
+    forEach(["Toto", "Titi"], mockCallback );
+
+    expect(mockCallback.mock.calls[0][0]).toBe("Toto");
+    expect(mockCallback.mock.calls[1][0]).toBe("Titi");
+    expect(mockCallback.mock.results[0].value).toBe("salut Toto");
+    expect(mockCallback.mock.results[1].value).toBe("salut Titi");
+});
+
+
+
