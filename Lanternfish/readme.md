@@ -55,3 +55,6 @@ Un poisson-lanterne ne peut pas avoir un timer de 0, il est réinitialisé à 6.
 Un poisson-lanterne qui a été réinitialisé à 6 ne sera pas décrémenté le même jour.
 
 Trouver le résultat de l'algorithme avec les données finales.
+
+Partie 2  
+La même chose qu'avant, mais cette fois avec 256 à la place de 80.
